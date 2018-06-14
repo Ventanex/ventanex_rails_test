@@ -14,7 +14,7 @@
               <th>Account Type</th>
               <th>Account Number</th>
               <th>
-                <button type="button" class="btn btn-success">Create</button>
+                <a href='<%=new_pay_account_path%>' data-method='get'><button type="button" class="btn btn-success">Create</button></a>
               </th>
             </tr>
           </thead>
@@ -24,12 +24,12 @@
                 <td><%= pay_account.nickname %></td>
                 <td><%= pay_account.account_type.humanize %></td>
                 <td>
-                  <%= pay_account.account_number %>
-                  <button type="button" class="btn btn-sm btn-default">hide</button>
+                  <span id="<%= pay_account.account_number %>"><%= pay_account.account_number %></span>
+                  <button id='hide' onclick="hide('<%= pay_account.account_number %>')" type="button" class="btn btn-sm btn-default">hide</button>
                 </td>
                 <td>
-                  <button type="button" class="btn btn-warning">Show</button>
-                  <button type="button" class="btn btn-danger">Delete</button>
+                  <a href="<%=pay_account_path(pay_account.id)%>"><button type="button" class="btn btn-warning">Show</button></a>
+                  <a href="<%=pay_account_path(pay_account.id)%>" data-method='delete'><button type="button" class="btn btn-danger">Delete</button></a>
                 </td>
               </tr>
             <% end %>
@@ -39,3 +39,14 @@
     </div>
   </div>
 </div>
+<script type="text/javascript">
+  function hide(e){
+    var string = document.getElementById(e);
+    var arr = e.split("");
+      for(var i=0;i<=e.length-5;i++){
+        arr[i]="*"
+      }
+    var join = arr.join("")
+    string.innerText= join
+  }
+</script>

@@ -2,13 +2,13 @@ common: &common
   adapter: mysql2
   database_timezone: local
   pool: 100
-  password: password
+  password: Dcsd195617
   connect_timeout: 20
   timeout: 900
-  socket: /tmp/mysql.sock
+  socket: 
   port: 3306
-  username: <%= ENV['DATABASE_USERNAME'] %>
-  password: <%= ENV['DATABASE_PASSWORD'] %>
+  username: root
+  password: Dcsd195617
 development:
   <<: *common
   adapter: mysql2
