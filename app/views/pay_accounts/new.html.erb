@@ -1,0 +1,14 @@
+<h3>Create a New Pay Account</h3>
+<hr>
+<form action="<%=pay_accounts_path%>" method="post">
+	<input type="hidden" name="authenticity_token" value='<%= form_authenticity_token%>'>
+	<label>Account Name:</label>
+	<input type="text" name="nickname">
+	<label>Account Type:</label>
+	<select type='number' name='account_type'>
+		<option value='1'>Bank account</option>
+		<option value='2'>Debit Card</option>
+	</select>
+	<small>*Account number will be a randomly generated 12 digit number</small>
+	<button type='submit'>Create Account</button>
+</form>

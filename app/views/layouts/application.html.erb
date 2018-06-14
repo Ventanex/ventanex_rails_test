@@ -10,6 +10,13 @@
   </head>
 
   <body>
-    <%= yield %>
+    <div id="nav">
+      <h2>Welcome</h2>
+      <ul>
+          <li><a href="<%=home_path%>">Home</a></li>
+          <li><a href="<%=root_path%>">Pay Accounts</a></li>
+      </ul> 
+    </div>
+     <%= yield %>
   </body>
 </html>
