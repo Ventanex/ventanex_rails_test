@@ -42,7 +42,7 @@ group :development, :test do
 end
 
 gem 'figaro'
-gem 'bootstrap', '~> 4.1.1'
+gem 'bootstrap', '~> 4.1.3'
 gem 'jquery-rails'
 
 group :development do
