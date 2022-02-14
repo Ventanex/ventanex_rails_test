@@ -10,16 +10,31 @@
   </head>
 
   <body>
-    <div>
-      <% if current_user %>
-        <%= link_to  "Logout", destroy_user_session_path, method: :delete %>
-      <% else%>
-        <%= link_to  "Register", new_user_registration_path %>
-        <%= link_to  "Login", new_user_session_path %>
-      <% end %>
-    </div>
-    <div>
-      <%= yield %>
+    <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="/">Home</a>
+        </div>
+        <ul class="navbar-nav navbar-right">
+          <li class="nav-item text-white">
+          <% if current_user %>
+            <%= link_to  "Logout", destroy_user_session_path, method: :delete, class: "text-white" %>
+          <% else%>
+            <%= link_to  "Register", new_user_registration_path, class: "text-white" %>
+            <span>/</span>
+            <%= link_to  "Login", new_user_session_path, class: "text-white" %>
+          <% end %>
+          </li>
+        </ul>
+        </div>
+      </div>
+    </nav>
+    <div class="container-fluid mt-2">
+      <div class="card">
+        <div class="card-body">
+          <%= yield %>
+        </div>
+      </div>
     </div>
   </body>
 </html>
