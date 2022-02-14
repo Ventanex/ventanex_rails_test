@@ -8,6 +8,15 @@ rake db:seed_fu
 rails s
 ```
 
+# Testing
+```
+rspec spec/models/pay_account_spec.rb
+```
+or
+```
+rspec
+```
+
 # Test
 1. Commit code to your repository at start(THIS IS IMPORTANT) and make sure to only take around an hour. This test is more about a feel of where you are at and less if you can complete everything.
 2. Make the create button work and shows a form that allows a user to enter nickname, account number, and account type
