@@ -2,13 +2,20 @@ common: &common
   adapter: mysql2
   database_timezone: local
   pool: 100
-  password: password
+  # password: password
+  password: Password1!
   connect_timeout: 20
   timeout: 900
-  socket: /tmp/mysql.sock
+  # socket: /tmp/mysql.sock
+  host: localhost
   port: 3306
-  username: root
+  # username: root
+  username: app
 development:
   <<: *common
   adapter: mysql2
   database: code_test
+test:
+  <<: *common
+  adapter: mysql2
+  database: code_test_test
