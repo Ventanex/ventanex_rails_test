@@ -1,0 +1,28 @@
+<div class="col-md-12 mt-2">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h3>
+        Pay Accounts
+      </h3>
+    </div>
+    <div class="panel-body">
+      <%= form_with model: @pay_account do |form| %>
+        <div>
+          <%= form.label :nickname %><br>
+          <%= form.text_field :nickname %><br>
+        </div>
+        <div>
+          <%= form.label :account_number %><br>
+          <%= form.text_field :account_number %>
+        </div>
+        <div>
+          <%= form.label :account_type %><br>
+          <%= form.select :account_type, options_for_select(PayAccount.account_types), value: form.object.account_type.to_i%><br>
+        </div>
+        <div>
+          <%= form.submit %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

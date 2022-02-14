@@ -14,28 +14,51 @@
               <th>Account Type</th>
               <th>Account Number</th>
               <th>
-                <button type="button" class="btn btn-success">Create</button>
+                <% if current_user %>
+                  <button type="button" class="btn btn-success" onclick="location.href='<%= new_pay_account_path %>'">Create</button>
+                <% end %>
               </th>
             </tr>
           </thead>
           <tbody>
-            <% @pay_accounts.each do |pay_account| %>
-              <tr>
-                <td><%= pay_account.nickname %></td>
-                <td><%= pay_account.account_type.humanize %></td>
-                <td>
-                  <%= pay_account.account_number %>
-                  <button type="button" class="btn btn-sm btn-default">hide</button>
-                </td>
-                <td>
-                  <button type="button" class="btn btn-warning">Show</button>
-                  <button type="button" class="btn btn-danger">Delete</button>
-                </td>
-              </tr>
+            <% if current_user && @pay_accounts %>
+              <% @pay_accounts.each_with_index do |pay_account, index| %>
+                <tr>
+                  <td><%= pay_account.nickname %></td>
+                  <td><%= pay_account.account_type.humanize %></td>
+                  <td>
+                    <span><%= pay_account.account_number %></span>
+                    <button type="button" class="btn btn-sm btn-secondary btn-hide">hide</button>
+                  </td>
+                  <td class="d-flex">
+                    <button type="button" class="btn btn-warning mr-1" onclick="location.href='<%= pay_account_path(pay_account) %>'">Show</button>
+                    <%= button_to "Delete", pay_account_path(pay_account.id), {method: :delete, class: "btn btn-danger"} %>
+                  </td>
+                </tr>
+              <% end %>
             <% end %>
           </tbody>
         </table>
       </div>
+      <h3>
+        Xml Parser
+      </h3>
+      <p>
+        LoanNumber: <%= PayAccount.loan_number%>
+      </p>
+      <p>
+        BorrowerName: <%= PayAccount.borrower_name%>
+      </p>
     </div>
   </div>
 </div>
+
+<script type="text/javascript">
+  $(document).ready(function() {
+    $(".btn-hide").click(function() {
+      var obj = $(this).parent().find("span");
+      var semiPassword = obj.html().replace(/.(?=.{4,}$)/g, '*');
+      obj.html(semiPassword)
+    });
+  });
+</script>

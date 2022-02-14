@@ -1,3 +1,3 @@
 class Account
-  # TODO Add code here
+  # TODO: Add code here
 end
